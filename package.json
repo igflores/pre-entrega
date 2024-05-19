@@ -1,4 +1,18 @@
 {
+  "name": "cypress-js-desafio2-cursofabrizio",
+  "description": "Cypress Automation - Desafio2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open  --e2e --browser electron"
+  },
+  "keywords": [
+    "cypress"
+  ],
+  "author": "Isabel Gonzalez",
+  "license": "ISC",
+  "homepage": "git@github.com:igflores/pre-entrega.git",
+  
   "devDependencies": {
     "cypress": "^13.9.0"
   }
