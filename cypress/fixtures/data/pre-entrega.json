@@ -1,3 +1,14 @@
 {
-    "messageAlertProductAdded":"Message alert"
+    "messageAlertProductAdded":"Message alert",
+    "shoppingCartPageTitle":"Shopping Cart",
+
+    "buzoNegroProductName":"Buzo Negro",
+    "buzoNegroProductPrice":"$23.76",
+    "buzoNegroProductTotalPrice":"2",
+
+    "jeanAzulProductName":"Jean Azul",
+    "jeanAzulProductPrice":"$11.98",
+    "jeanAzulProductTotalPrice":"1",
+
+    "quantity":"2"
 }

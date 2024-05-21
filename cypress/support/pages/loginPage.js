@@ -3,6 +3,7 @@ class LoginPage{
         userInput: () => cy.get('[data-cy="user"]'),
         passwordInput: () => cy.get('[data-cy="pass"]'),
         loginButton: () => cy.get('[data-cy="submitForm"]'),
+        registrateLink: () => cy.get('[data-cy="registertoggle"]')
     }
 
     fillUser(){
