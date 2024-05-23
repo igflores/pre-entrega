@@ -5,7 +5,7 @@ class ProductListPage{
         jeanAzulAddtoCardButton: () => cy.get('button[id="add-to-cart-1003"]'),
         messagealertModalHeader: () => cy.get('[id^="chakra-modal"] header'),
         closeModalButton: () => cy.get('[id^="chakra-modal"] button[data-cy="closeModal"]'),
-        goToShoppingCartButton: () => cy.get('[data-cy="goShoppingCart"]'),        
+        goToShoppingCartButton: () => cy.get('[data-cy="goShoppingCart"]'),
     }
     
     addToCardBuzoNegroProduct() {
