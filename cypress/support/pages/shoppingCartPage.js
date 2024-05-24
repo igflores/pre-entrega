@@ -1,11 +1,13 @@
 class ShoppingCartPage{
     get = {
         shoppingCartPageTitle: () => cy.get('[id="title"]'),
-
         cartRows: () => cy.get('ul[role="list"] li'),
+        showTotalPriceButton: () => cy.get('[id="root"] button[class="chakra-button css-1i1ynt3"]'),
+        totalPrice: () => cy.get('p[id="price"]'),
+    }
 
-        // shoppingCartDetailsBuzoNegro: () => ('li[class^="css-"] [data-cy="productAmount"]').eq(0),
-        // shoppingCartDetailsJeanAzul: () => ('li[class^="css-"] [data-cy="productAmount"]').eq(1),
+    selectTotalPriceButton() {
+        this.get.showTotalPriceButton().click()
     }
 }
 export const shoppingCartPage = new ShoppingCartPage();
