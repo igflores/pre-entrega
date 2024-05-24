@@ -12,8 +12,7 @@
   "author": "Isabel Gonzalez",
   "license": "ISC",
   "homepage": "git@github.com:igflores/pre-entrega.git",
-  
   "devDependencies": {
-    "cypress": "^13.9.0"
+    "cypress": "^13.10.0"
   }
 }
