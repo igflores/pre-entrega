@@ -22,23 +22,27 @@ describe('Actividad complementaria 5', () => {
         welcomePage.selectOnlineShopButton()
         cy.url().should('include', 'onlineshop')
         productListPage.get.productListPageTitle().should('be.visible')
-        //Add "Buzo Negro" two times to the shopping cart
-        productListPage.addToCardBuzoNegroProduct()
-        productListPage.get.messagealertModalHeader().should('be.visible').and('have.text', data.messageAlertProductAdded)
-        productListPage.addToCardBuzoNegroProduct()
-        productListPage.get.messagealertModalHeader().should('be.visible').and('have.text', data.messageAlertProductAdded)
-        //Add one "Jean Azul" to the shopping cart
-        productListPage.addToCardJeanAzul()
-        productListPage.get.messagealertModalHeader().should('be.visible').and('have.text', data.messageAlertProductAdded)
-        //Navigate to the Shopping cart page
-        productListPage.goToShoppingCart()
-        shoppingCartPage.get.shoppingCartPageTitle().should('be.visible').and('have.text', data.shoppingCartPageTitle)
     })
 
     it('TC01: Pre-entrega', () => {
         const totalPriceBuzoNegro = (data.buzoNegro.price * data.buzoNegro.quantity);
         const totalPriceJeanAzul = (data.jeanAzul.price * data.jeanAzul.quantity);
         const totalOrderPrice = (parseFloat(totalPriceBuzoNegro) + parseFloat(totalPriceJeanAzul)).toFixed(2);
+
+        //Add "Buzo Negro" two times to the shopping cart
+        productListPage.addToCartProduct(data.buzoNegro)
+        productListPage.get.messagealertModalHeader().should('be.visible').and('have.text', data.messageAlertProductAdded)
+        productListPage.addToCartProduct(data.buzoNegro)
+        productListPage.get.messagealertModalHeader().should('be.visible').and('have.text', data.messageAlertProductAdded)
+        
+        //Add one "Jean Azul" to the shopping cart
+        productListPage.addToCartProduct(data.jeanAzul)
+        productListPage.get.messagealertModalHeader().should('be.visible').and('have.text', data.messageAlertProductAdded)
+
+
+        //Navigate to the Shopping cart page
+        productListPage.goToShoppingCart()
+        shoppingCartPage.get.shoppingCartPageTitle().should('be.visible').and('have.text', data.shoppingCartPageTitle)
 
         shoppingCartPage.get.cartRows().contains(data.buzoNegro.name).parents('li').within(() => {
             cy.get('[data-cy="productAmount"]').should('have.text', data.buzoNegro.quantity.toString());
