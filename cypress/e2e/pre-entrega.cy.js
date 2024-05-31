@@ -4,8 +4,8 @@ import { headerPage } from "../support/pages/headerPage"
 import { welcomePage } from "../support/pages/welcomePage"
 import { productListPage } from "../support/pages/productListPage"
 import { shoppingCartPage } from "../support/pages/shoppingCartPage"
-describe('Actividad complementaria 5', () => { 
-    
+
+describe('Actividad complementaria 5', () => {     
     let data;
     before('Before', () => {
         cy.fixture('data/pre-entrega').then(fixtureData => {
