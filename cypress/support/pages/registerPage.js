@@ -3,7 +3,7 @@ class RegisterPage{
         iniciaSesionLink: () => cy.get('[data-cy="registertoggle"]')
     }
 
-    goToLiginPage(){
+    goToLoginPage(){
         this.get.iniciaSesionLink().dblclick()
     }
 }

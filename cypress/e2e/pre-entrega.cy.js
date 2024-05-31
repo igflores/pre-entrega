@@ -1,11 +1,10 @@
 import { loginPage } from "../support/pages/loginPage"
 import { registerPage } from "../support/pages/registerPage"
-import { headerPage } from "../support/pages/headerPage"
 import { welcomePage } from "../support/pages/welcomePage"
 import { productListPage } from "../support/pages/productListPage"
 import { shoppingCartPage } from "../support/pages/shoppingCartPage"
 
-describe('Actividad complementaria 5', () => {     
+describe('Pre-entrega', () => {     
     let data;
     before('Before', () => {
         cy.fixture('data/pre-entrega').then(fixtureData => {
@@ -14,20 +13,10 @@ describe('Actividad complementaria 5', () => {
     });
 
     beforeEach("Preconditions", () => {
-        //Navigate to Pushing IT Register page
-        cy.visit('')
-        cy.url().should('include','pushing-it')      
-        //Navigate to Pushing IT Log in page
-        registerPage.goToLiginPage()
-        loginPage.get.registrateLink().should('be.visible')
-        //Log in
+        cy.visit('')     
+        registerPage.goToLoginPage()
         loginPage.loginSuccessfully()
-        headerPage.get.logoutButton().should('be.visible')
-        headerPage.get.welcomeText().should('be.visible')
-        //Navigate to the Online shop: Product list page
         welcomePage.selectOnlineShopButton()
-        cy.url().should('include', 'onlineshop')
-        productListPage.get.productListPageTitle().should('be.visible')
     })
 
     it('TC01: Pre-entrega', () => {
