@@ -4,7 +4,6 @@ import { headerPage } from "../support/pages/headerPage"
 import { welcomePage } from "../support/pages/welcomePage"
 import { productListPage } from "../support/pages/productListPage"
 import { shoppingCartPage } from "../support/pages/shoppingCartPage"
-// import data from "../fixtures/data/pre-entrega.json"
 describe('Actividad complementaria 5', () => { 
     
     let data;
@@ -51,7 +50,6 @@ describe('Actividad complementaria 5', () => {
         //Add one "Jean Azul" to the shopping cart
         productListPage.addToCartProduct(data.jeanAzul.name)
         productListPage.get.messagealertModalHeader().should('be.visible').and('have.text', data.messageAlertProductAdded)
-
 
         //Navigate to the Shopping cart page
         productListPage.goToShoppingCart()
