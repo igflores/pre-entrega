@@ -4,8 +4,15 @@ import { headerPage } from "../support/pages/headerPage"
 import { welcomePage } from "../support/pages/welcomePage"
 import { productListPage } from "../support/pages/productListPage"
 import { shoppingCartPage } from "../support/pages/shoppingCartPage"
-import data from "../fixtures/data/pre-entrega.json"
+// import data from "../fixtures/data/pre-entrega.json"
 describe('Actividad complementaria 5', () => { 
+    
+    let data;
+    before('Before', () => {
+        cy.fixture('data/pre-entrega').then(fixtureData => {
+            data = fixtureData
+        })
+    });
 
     beforeEach("Preconditions", () => {
         //Navigate to Pushing IT Register page
@@ -29,14 +36,20 @@ describe('Actividad complementaria 5', () => {
         const totalPriceJeanAzul = (data.jeanAzul.price * data.jeanAzul.quantity);
         const totalOrderPrice = (parseFloat(totalPriceBuzoNegro) + parseFloat(totalPriceJeanAzul)).toFixed(2);
 
+        // Search for the product = Buzo negro
+        productListPage.get.searchBarInput().click().clear().type(`${data.buzoNegro.name}{enter}`);
+
         //Add "Buzo Negro" two times to the shopping cart
-        productListPage.addToCartProduct(data.buzoNegro)
+        productListPage.addToCartProduct(data.buzoNegro.name)
         productListPage.get.messagealertModalHeader().should('be.visible').and('have.text', data.messageAlertProductAdded)
-        productListPage.addToCartProduct(data.buzoNegro)
+        productListPage.addToCartProduct(data.buzoNegro.name)
         productListPage.get.messagealertModalHeader().should('be.visible').and('have.text', data.messageAlertProductAdded)
         
+        // Search for the product = Jean azul
+        productListPage.get.searchBarInput().click().clear().type(`${data.jeanAzul.name}{enter}`);
+        
         //Add one "Jean Azul" to the shopping cart
-        productListPage.addToCartProduct(data.jeanAzul)
+        productListPage.addToCartProduct(data.jeanAzul.name)
         productListPage.get.messagealertModalHeader().should('be.visible').and('have.text', data.messageAlertProductAdded)
 
 

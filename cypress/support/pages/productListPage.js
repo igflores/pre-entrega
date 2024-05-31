@@ -1,6 +1,8 @@
 class ProductListPage{
     get = {
         productListPageTitle: () => cy.get('#title'),
+        searchBarInput: () => cy.get('input[data-cy="search-bar"]'),
+
         buzoNegroProduct: () => cy.get('[class="css-4t9hm0"]').eq(0),
         buzoNegroAddtoCartButton: () => cy.get('[class="css-1p856vl"] button[data-cy^="add-to-cart-1000"]'),
         jeanAzulAddtoCartButton: () => cy.get('button[id="add-to-cart-1003"]'),
@@ -10,16 +12,7 @@ class ProductListPage{
     }
         
     addToCartProduct(product) {
-        switch(product.name) {
-            case 'Buzo Negro':
-                this.get.buzoNegroAddtoCartButton().click();
-                break;
-            case 'Jean Azul':
-                this.get.jeanAzulAddtoCartButton().click();
-                break;
-            default:
-                throw new Error(`Product: '${product.name}' not found.`)
-        }
+        cy.get(`[name="${product}"]`).click();
         this.get.closeModalButton().click();
     }
 
