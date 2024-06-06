@@ -4,6 +4,8 @@ import { welcomePage } from "../support/pages/welcomePage"
 import { productListPage } from "../support/pages/productListPage"
 import { shoppingCartPage } from "../support/pages/shoppingCartPage"
 
+const constant = require('../support/constants')
+
 describe('Pre-entrega', () => {     
     let data;
     before('Before', () => {
@@ -29,20 +31,20 @@ describe('Pre-entrega', () => {
 
         //Add "Buzo Negro" two times to the shopping cart
         productListPage.addToCartProduct(data.buzoNegro.name)
-        productListPage.get.messagealertModalHeader().should('be.visible').and('have.text', data.messageAlertProductAdded)
+        productListPage.get.messagealertModalHeader().should('be.visible').and('have.text', constant.messageAlertProductAdded)
         productListPage.addToCartProduct(data.buzoNegro.name)
-        productListPage.get.messagealertModalHeader().should('be.visible').and('have.text', data.messageAlertProductAdded)
+        productListPage.get.messagealertModalHeader().should('be.visible').and('have.text', constant.messageAlertProductAdded)
         
         // Search for the product = Jean azul
         productListPage.get.searchBarInput().click().clear().type(`${data.jeanAzul.name}{enter}`);
         
         //Add one "Jean Azul" to the shopping cart
         productListPage.addToCartProduct(data.jeanAzul.name)
-        productListPage.get.messagealertModalHeader().should('be.visible').and('have.text', data.messageAlertProductAdded)
+        productListPage.get.messagealertModalHeader().should('be.visible').and('have.text', constant.messageAlertProductAdded)
 
         //Navigate to the Shopping cart page
         productListPage.goToShoppingCart()
-        shoppingCartPage.get.shoppingCartPageTitle().should('be.visible').and('have.text', data.shoppingCartPageTitle)
+        shoppingCartPage.get.shoppingCartPageTitle().should('be.visible').and('have.text', constant.shoppingCartPageTitle)
 
         shoppingCartPage.get.cartRows().contains(data.buzoNegro.name).parents('li').within(() => {
             cy.get('[data-cy="productAmount"]').should('have.text', data.buzoNegro.quantity.toString());
